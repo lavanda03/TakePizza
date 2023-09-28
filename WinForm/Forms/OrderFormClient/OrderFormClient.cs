@@ -4,6 +4,7 @@ using Service.Services.Order;
 using Service.Services.Order.Models;
 using Service.Services.Product;
 using Service.Services.Product.Models;
+using WinForm.Common;
 using WinForm.Forms.OrderFormClient.ViewModels;
 
 
@@ -222,7 +223,7 @@ namespace WinForm.Forms.OrderFormClient
                     OrderPrice = OrderViewModel.OrderPrice,
                     PaymentType = OrderViewModel.PaymentType,
                     Status = OrderViewModel.Status,
-                    UserId = OrderViewModel.UserId,
+                    UserId =UserInfoViewModels.Id,
                     OrderDetails = new List<AddOrderDetailCommand>(orderDetailDt.Rows.Cast<DataRow>().Select(x =>
                         new AddOrderDetailCommand
                         {

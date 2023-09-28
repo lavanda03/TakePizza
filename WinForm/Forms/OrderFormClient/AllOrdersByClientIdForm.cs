@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinForm.Common;
 using WinForm.Forms.OrderFormClient.ViewModels;
 
 namespace WinForm.Forms.OrderFormClient
@@ -45,7 +46,7 @@ namespace WinForm.Forms.OrderFormClient
 
         public void GetAllOrdersbyUserId()
         {
-            var allOrders = orderService.GetAllOrdersByUserId(orderViewModel.UserId);
+            var allOrders = orderService.GetAllOrdersByUserId(UserInfoViewModels.Id);
 
             foreach (var order in allOrders)
             {

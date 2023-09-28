@@ -130,7 +130,7 @@ namespace Service.Services.Order
                     Email = orderEntity.User.Email,
                     Password = orderEntity.User.Password,
                     City = orderEntity.User.City,
-                    Addrese = orderEntity.User.Addrese,
+                    Address = orderEntity.User.Address,
                     Phone = orderEntity.User.Phone,
                     Type = orderEntity.User.Type,
                     Gender = orderEntity.User.Gender

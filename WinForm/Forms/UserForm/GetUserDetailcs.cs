@@ -22,7 +22,7 @@ namespace WinForm.Forms.UserForm
             txtPassword.Text = user.Password;
             txtPhone.Text = user.Phone;
             txtCity.Text = user.City;
-            txtAddress.Text = user.Addrese;
+            txtAddress.Text = user.Address;
             txtGender.Text = user.Gender;
         }
     }

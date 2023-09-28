@@ -39,11 +39,13 @@ namespace WinForm.Forms.LogInForm
                 return;
             }
 
+            UserInfoViewModels.SetUpUserInfo(userResult);
+
             MessageBox.Show(MessageTexts.SuccesfullMessageText);
 
             Form menuForm;
 
-            if (userResult.Type.ToLower() == Common.Constants.AdminUserType)
+            if (UserInfoViewModels.Type.ToLower() == Common.Constants.AdminUserType)
             {
                 menuForm = new MainMenuFormAdmin();
             }

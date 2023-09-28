@@ -31,6 +31,11 @@ namespace Service.Services.User
                 Email = userEntity.Email,
                 FirstName = userEntity.FirstName,
                 Type = userEntity.Type,
+                City = userEntity.City,
+                Address = userEntity.Address,
+                Phone = userEntity.Phone,
+                Gender = userEntity.Gender,
+                CreatedAt = userEntity.CreatedAt,
             };
 
             return result;
@@ -104,7 +109,7 @@ namespace Service.Services.User
                 FirstName = command.FirstName,
                 LastName = command.LastName,
                 City = command.City,
-                Addrese = command.Address,
+                Address = command.Address,
                 Password = command.Password,
                 Gender = command.Gender,
                 Email = command.Email,
@@ -156,7 +161,7 @@ namespace Service.Services.User
                 FirstName = userEntity.FirstName,
                 LastName = userEntity.LastName,
                 City = userEntity.City,
-                Addrese = userEntity.Addrese,
+                Address = userEntity.Address,
                 Password = userEntity.Password,
                 Email = userEntity.Email,
                 Phone = userEntity.Phone
@@ -209,8 +214,8 @@ namespace Service.Services.User
             if (command.City != userEntity.City)
                 userEntity.City = command.City;
 
-            if (command.Address != userEntity.Addrese)
-                userEntity.Addrese = command.Address;
+            if (command.Address != userEntity.Address)
+                userEntity.Address = command.Address;
 
             _userRepository.UpdateUser(userEntity);
         }
