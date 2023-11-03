@@ -14,6 +14,7 @@ namespace DataManipulation
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(Configurations.TakePizzaDbConnectionString);
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
