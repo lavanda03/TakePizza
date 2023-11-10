@@ -1,4 +1,4 @@
-﻿namespace WebApp.MethodRequest
+﻿namespace WebApp.Controllers.Category.Models
 {
     public class UpdateCategoryRequest
     {

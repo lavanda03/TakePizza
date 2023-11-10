@@ -1,4 +1,4 @@
-﻿namespace WebApp.MethodRequest
+﻿namespace WebApp.Controllers.Product.Models
 {
     public class UpdateProductRequest
     {

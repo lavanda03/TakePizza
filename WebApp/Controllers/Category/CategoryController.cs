@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Services.Category;
 using System.Linq.Expressions;
-using WebApp.MethodRequest;
+using WebApp.Controllers.Category.Models;
 
-namespace WebApp.Controllers
+namespace WebApp.Controllers.Category
 {
 
     [Route("api/category")]
@@ -17,16 +17,19 @@ namespace WebApp.Controllers
         [HttpGet("categories")]
         public IActionResult GetAllCategories()
         {
-            var categories = _categoryService.GetAllCategories();
-
-            if (categories == null)
+            try
             {
-                return NotFound();
+                var categories = _categoryService.GetAllCategories();
+                return Ok(categories);
             }
-            else return Ok(categories);
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+            
         }
 
-        [HttpGet("categories/categoryId")]
+        [HttpGet("{id}")]
         public IActionResult GetCategoryById(int id)
         {
             try
@@ -37,12 +40,12 @@ namespace WebApp.Controllers
 
             catch (Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
 
         }
 
-        [HttpPost("category/addCategory")]
+        [HttpPost()]
 
         public IActionResult AddCategory([FromBody] CreateCategoryRequest request)
         {
@@ -53,21 +56,19 @@ namespace WebApp.Controllers
                     Name = request.Name,
                     Description = request.Description
                 });
-                return CreatedAtAction("GetCategoryByID", new { categoryId = result }, result);
+                return CreatedAtAction("AddCategory", new { categoryId = result }, result);
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
 
         }
-        [HttpPut("category/updateCategory")]
+        [HttpPut()]
         public IActionResult UpdateCategory([FromBody] UpdateCategoryRequest update)
         {
             try
             {
-                var existingUpdat = _categoryService.GetCategoryById(update.Id);
-
                 _categoryService.UpdateCategory(new Service.Services.Category.Models.UpdateCategoryCommand
                 {
                     Id = update.Id,
@@ -78,25 +79,25 @@ namespace WebApp.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
 
         }
 
-        [HttpDelete("category/deleteCategory")]
-        public IActionResult Delete(int id) 
+        [HttpDelete("{Id}")]
+        public IActionResult Delete(int id)
         {
             try
             {
                 _categoryService.DeleteCategory(id);
                 return NoContent();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
-            
+
 
         }
-    }   
+    }
 }

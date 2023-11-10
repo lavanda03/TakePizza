@@ -1,4 +1,4 @@
-﻿namespace WebApp.MethodRequest
+﻿namespace WebApp.Controllers.User.Models
 {
     public class CreateUserRequest
     {
