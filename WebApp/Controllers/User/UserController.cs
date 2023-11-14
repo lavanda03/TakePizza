@@ -58,7 +58,7 @@ namespace WebApp.Controllers.User
                     Phone = request.Phone,
                     Type = request.Type,
                     Gender = request.Gender,
-                    CreatedAt = request.CreatedAt,
+                   
                 });
                 return CreatedAtAction("AddUser", new { categoryId = User }, User);
             }
@@ -80,7 +80,9 @@ namespace WebApp.Controllers.User
                     Email = request.Email,
                     City = request.City,
                     Address = request.Address,
-                    Phone = request.Phone
+                    Phone = request.Phone,
+                    
+
                 });
                 return Ok();
             }
@@ -92,11 +94,11 @@ namespace WebApp.Controllers.User
 
         [HttpDelete("{id}")]
 
-        public IActionResult DeleteUser(int Id)
+        public IActionResult DeleteUser(int id)
         {
             try
             {
-                _userService.DeleteUser(Id);
+                _userService.DeleteUser(id);
                 return Ok();
             }
             catch (Exception ex)

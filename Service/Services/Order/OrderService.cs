@@ -121,20 +121,7 @@ namespace Service.Services.Order
                 OrderDescription = orderEntity.OrderDescription,
                 PaymentType = orderEntity.PaymentType,
                 Status = orderEntity.Status,
-                User = new UserData
-                {
-                    Id = orderEntity.User.Id,
-                    UserName = orderEntity.User.UserName,
-                    FirstName = orderEntity.User.FirstName,
-                    LastName = orderEntity.User.LastName,
-                    Email = orderEntity.User.Email,
-                    Password = orderEntity.User.Password,
-                    City = orderEntity.User.City,
-                    Address = orderEntity.User.Address,
-                    Phone = orderEntity.User.Phone,
-                    Type = orderEntity.User.Type,
-                    Gender = orderEntity.User.Gender
-                }
+                UserId= orderEntity.UserId  
             };
 
             return result;
@@ -148,7 +135,7 @@ namespace Service.Services.Order
             if (string.IsNullOrEmpty(command.OrderAddress))
                 throw new Exception(ErrorHandlerService.ParameterNotValidError("Order Address"));
 
-            if (command.OrderAddress.Any(digit => !char.IsLetter(digit) || !char.IsDigit(digit)))
+            if (command.OrderAddress.Any(digit => !char.IsLetter(digit) && !char.IsDigit(digit) && !char.IsSeparator(digit)))
             {
                 throw new Exception(
                     ErrorHandlerService.ParameterMustHaveError("Address", new[] { "letters", "digits" }));

@@ -74,11 +74,11 @@ namespace WebApp.Controllers.Order
         }
 
         [HttpGet("user/{id}")]
-        public IActionResult GetOrderByUserId(int userId)
+        public IActionResult GetOrderByUserId(int id)
         {
             try
             {
-                var order = _orderService.GetAllOrdersByUserId(userId);
+                var order = _orderService.GetAllOrdersByUserId(id);
                 return Ok(order);
 
             }
@@ -110,11 +110,11 @@ namespace WebApp.Controllers.Order
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteUser(int userId)
+        public IActionResult DeleteUser(int id)
         {
             try
             {
-                _orderService.DeleteOrder(userId);
+                _orderService.DeleteOrder(id);
                 return Ok();
             }
             catch (Exception ex)

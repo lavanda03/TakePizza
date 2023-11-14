@@ -84,13 +84,13 @@ namespace WebApp.Controllers.Category
 
         }
 
-        [HttpDelete("{Id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCategory(int id)
         {
             try
             {
                 _categoryService.DeleteCategory(id);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {

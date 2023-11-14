@@ -8,6 +8,6 @@
         public string OrderDescription { get; set; }
         public string PaymentType { get; set; }
         public string Status { get; set; }
-        public UserData User { get; set; }
+        public int UserId { get; set; }
     }
 }

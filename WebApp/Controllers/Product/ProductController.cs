@@ -24,7 +24,7 @@ namespace WebApp.Controllers.Product
                 return NotFound(ex.Message);
             }
         }
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {
             try
@@ -39,11 +39,11 @@ namespace WebApp.Controllers.Product
         }
 
         [HttpGet("products/category/{id}")]
-        public IActionResult GetAllProductByCategoryId(int categoryId)
+        public IActionResult GetAllProductByCategoryId(int id)
         {
             try
             {
-                var products = _productService.GetAllProductByCategoryId(categoryId);
+                var products = _productService.GetAllProductByCategoryId(id);
                 return Ok(products);
             }
             catch (Exception ex)
@@ -53,7 +53,7 @@ namespace WebApp.Controllers.Product
         }
 
         [HttpPost()]
-        public IActionResult AddCategory([FromBody] CreateProductRequest request)
+        public IActionResult AddProduct([FromBody] CreateProductRequest request)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace WebApp.Controllers.Product
                     Price = request.Price,
                     CategoryId = request.CategoryId
                 });
-                return CreatedAtAction("AddProduct", new { categoryid = product }, product);
+                return CreatedAtAction("AddProduct", new { prodcutid = product }, product);
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace WebApp.Controllers.Product
             try
             {
                 _productService.DeleteProduct(id);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {
