@@ -1,6 +1,6 @@
-﻿namespace Service.Services.Order.Models
+﻿namespace WebApp.Controllers.Order.Models
 {
-    public class GetOrderResult
+    public class UpdateOrderRequest
     {
         public int Id { get; set; }
         public decimal OrderPrice { get; set; }
@@ -8,6 +8,6 @@
         public string OrderDescription { get; set; }
         public string PaymentType { get; set; }
         public string Status { get; set; }
-        public int UserId { get; set; }
     }
 }
+
